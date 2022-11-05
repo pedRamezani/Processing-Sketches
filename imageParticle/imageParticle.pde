@@ -67,6 +67,7 @@ void setup() {
 }
 
 void draw() {
+  if (mousePressed) return;
   for (ImageParticle p : particles) {
     p.update();
     p.draw();
@@ -89,13 +90,16 @@ void mousePressed() {
 }
 
 void mouseDragged() {
-  noStroke();
-  fill(215, 42, 30);
-  rect(min(mouseX, prevMouseX), min(mouseY, prevMouseY), abs(mouseX - prevMouseX), abs(mouseY - prevMouseY));
+  whiteRectAtMousePos();
 }
 
 void mouseReleased() {
+  whiteRectAtMousePos();
+}
+
+void whiteRectAtMousePos() {
   noStroke();
   fill(255);
   rect(min(mouseX, prevMouseX), min(mouseY, prevMouseY), abs(mouseX - prevMouseX), abs(mouseY - prevMouseY));
 }
+  
